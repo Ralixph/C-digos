@@ -1,0 +1,98 @@
+import javax.swing.*;
+import java.util.Random;
+public class Atividade6_7 {
+    public static void main (String args[]){
+        int v [] = new int [20];
+        int menu = 0;
+        int x;
+        while (menu != 9){
+            
+            menu = Integer.parseInt(JOptionPane.showInputDialog("1 - Carregar Vetor \n 2 - Calcular média \n 3 - Verificar Maior e Menor \n 9 - Fechar Programa"));
+            
+               switch (menu){
+               
+                   case 1:
+                       
+                   v = carrega(v); 
+                   
+                   JOptionPane.showMessageDialog(null, "Vetor Carregado");
+                       
+                   break;
+                   
+                   case 2:
+                   
+                   v = classifica(v);
+                   
+                   JOptionPane.showMessageDialog(null, "Vetor classificado");
+                   
+                   System.out.print("\nVetor classificado: ");
+                   
+                   for (x = 0;x<20;x++){
+                       System.out.print("["+v[x]+"]");
+                   }
+                       
+                   break;
+                   
+                   case 3:
+                   
+                   procura(v);
+                       
+                   break;
+                   
+                   case 9:
+                   
+                   JOptionPane.showMessageDialog(null, "FIM");
+                       
+                   System.exit(0);   
+                   break;
+                   
+                   default: JOptionPane.showMessageDialog(null, "Opção invalida");
+               }
+        }   
+    }
+    static int [] carrega(int v[]){
+        Random random = new Random();
+        int x;
+            
+            System.out.print("Vetor inicialmente: ");
+        
+        for (x = 0;x<20;x++){
+            v[x] = random.nextInt(100)+1;
+            System.out.print("["+v[x]+"]");
+        }
+        
+    return v;    
+    }
+    static int [] classifica (int v[]){
+        int r, p, a;
+        
+        for (r = 0;r < 19;r++){
+            for (p = 0;p < 19 ;p++){
+                if  (v[r] > v[r+1] ){
+                    
+                    a = v[r];
+                    v[r] = v[r+1];        
+                    v[r+1] = a;
+                }
+            }
+        }
+        
+        
+    return v;    
+    }
+    static void procura (int v[]){
+        int x, y;
+        
+        y = Integer.parseInt(JOptionPane.showInputDialog("Insira o valor que deseja procurar"));
+        
+        System.out.print("\nValor encontrado nas posicoes: ");
+        
+        for (x=0;x<20;x++){
+           if (y == v[x]){
+               System.out.print("["+(x+1)+"]");
+               
+           } 
+            
+        }
+    }
+}
